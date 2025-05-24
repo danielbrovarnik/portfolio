@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DB | daniel brovarnik - aspiring data analyst</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        :root {
+            --bg-main: #FFFFFF; 
+            --bg-alt: #F8F9FA;  
+            --text-primary: #202124; 
+            --text-secondary: #5F6368; 
+
+            --accent-gemini-blue: #4A80FF;
+            --accent-gemini-purple: #A358DF;
+            --accent-gemini-pink: #E5487A;
+
+            --accent-primary: var(--accent-gemini-purple);
+            --accent-secondary: var(--accent-gemini-blue);
+
+            --border-color: #DADCE0; 
+            --card-shadow: 0 2px 4px rgba(0, 0, 0, 0.05), 0 4px 8px rgba(0, 0, 0, 0.05); 
+            --section-padding-desktop: 5rem 1rem;
+            --section-padding-tablet: 4rem 1rem;
+            --section-padding-mobile: 3rem 1rem;
+
+            /* Themeable properties */
+            --navbar-bg: rgba(255, 255, 255, 0.85);
+            --card-bg: #FFFFFF;
+            --card-border: var(--border-color);
+            --modal-bg: var(--bg-main);
+            --tag-bg: var(--bg-alt);
+            --tag-text: var(--text-secondary);
+            --tag-border: var(--border-color);
+        }
+
+        body.dark-theme {
+            --bg-main: #1e1e1e;
+            --bg-alt: #2a2a2a;
+            --text-primary: #e0e0e0;
+            --text-secondary: #aaaaaa;
+            --border-color: #383838;
+            --card-shadow: 0 2px 6px rgba(0,0,0,0.3), 0 4px 12px rgba(0,0,0,0.3);
+            
+            --navbar-bg: rgba(30, 30, 30, 0.85);
+            --card-bg: #2c2c2c;
+            --card-border: #484848;
+            --modal-bg: #2c2c2c; /* Dark modal background */
+            --tag-bg: #3a3a3a;
+            --tag-text: #c0c0c0;
+            --tag-border: #505050;
+        }
+
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; font-size: 16px; }
+        body { font-family: 'Poppins', sans-serif; background-color: var(--bg-main); color: var(--text-primary); line-height: 1.7; overflow-x: hidden; transition: background-color 0.3s ease, color 0.3s ease; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 1rem; }
+
+        /* --- Navigation --- */
+        .navbar { position: fixed; top: 0; left: 0; width: 100%; background-color: var(--navbar-bg); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); padding: 1rem 0; z-index: 1000; border-bottom: 1px solid var(--border-color); transition: background-color 0.3s ease, border-color 0.3s ease; }
+        .navbar .container { display: flex; justify-content: space-between; align-items: center; }
+        .nav-logo { font-weight: 700; font-size: 1.5rem; color: var(--text-primary); text-decoration: none; display: inline-block; vertical-align: middle; line-height: 1; }
+        .nav-logo .logo-large { font-size: 1.3em; font-weight: 700; color: var(--accent-primary); vertical-align: baseline; }
+        
+        .nav-actions-cluster { display: flex; align-items: center; gap: 0.5rem; /* Gap between theme toggle and menu toggle/nav links */ }
+        
+        .theme-toggle-btn {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 1.2rem; /* Adjust size as needed */
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: color 0.3s ease, background-color 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .theme-toggle-btn:hover {
+            color: var(--accent-primary);
+            background-color: rgba(0,0,0,0.05); /* Subtle hover for light mode */
+        }
+        body.dark-theme .theme-toggle-btn:hover {
+            background-color: rgba(255,255,255,0.1); /* Subtle hover for dark mode */
+        }
+
+        .nav-links { list-style: none; display: flex; }
+        .nav-links li { margin-left: 1.5rem; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; font-weight: 400; transition: color 0.3s ease; }
+        .nav-links a:hover, .nav-links a.active { color: var(--accent-primary); }
+        .menu-toggle { display: none; background: none; border: none; color: var(--text-primary); font-size: 1.5rem; cursor: pointer; padding: 0.5rem; }
+
+        /* --- Hero Section --- */
+        #hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 8rem 1rem 4rem; background: var(--bg-main); position: relative; transition: background-color 0.3s ease; } 
+        .hero-content h1 { font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 700; margin-bottom: 0.5rem; line-height: 1.2; color: var(--text-primary); }
+        .hero-content h1 span { background: linear-gradient(90deg, var(--accent-gemini-blue), var(--accent-gemini-purple), var(--accent-gemini-pink)); -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent; }
+        .typed-cursor {
+            background: linear-gradient(90deg, var(--accent-gemini-blue), var(--accent-gemini-purple), var(--accent-gemini-pink));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            -webkit-text-fill-color: transparent;
+            opacity: 1;
+            animation: typedjsBlink 0.7s infinite;
+            font-weight: normal; 
+        }
+        @keyframes typedjsBlink { 50% { opacity: 0.0; } }
+        .hero-content p.subtitle { font-size: clamp(1rem, 2.5vw, 1.15rem); color: var(--text-secondary); margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+        .cta-button { display: inline-block; background-color: var(--accent-primary); color: #FFFFFF; padding: 0.8rem 2rem; border-radius: 50px; text-decoration: none; font-weight: 600; transition: transform 0.3s ease, box-shadow 0.3s ease; box-shadow: 0 4px 15px rgba(163, 88, 223, 0.25); }
+        .cta-button:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(163, 88, 223, 0.35); }
+        .secondary-cta { margin-left: 1rem; color: var(--text-secondary); text-decoration: none; border-bottom: 1px solid transparent; transition: color 0.3s ease, border-color 0.3s ease; }
+        .secondary-cta:hover { color: var(--accent-primary); border-bottom-color: var(--accent-primary); }
+
+        /* --- Section Base Styles --- */
+        section { padding: var(--section-padding-desktop); transition: background-color 0.3s ease; }
+        #about, #projects { background-color: var(--bg-main); } 
+        #skills, #contact { background-color: var(--bg-alt); }
+
+
+        .section-title { text-align: center; font-size: clamp(2rem, 4vw, 2.5rem); font-weight: 600; margin-bottom: 3rem; position: relative; color: var(--text-primary); }
+        .section-title::after { content: ''; display: block; width: 60px; height: 3px; background-color: var(--accent-primary); margin: 0.5rem auto 0; border-radius: 2px; }
+
+        /* --- About Section --- */
+         #about .about-content { display: flex; flex-direction: column; align-items: center; text-align: center; }
+         #about .profile-pic { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: 2rem; border: 4px solid var(--accent-primary); box-shadow: var(--card-shadow); }
+         #about p { max-width: 700px; color: var(--text-secondary); margin-bottom: 1rem; font-size: clamp(0.9rem, 2vw, 1rem);}
+         #about p strong { color: var(--text-primary); }
+
+        /* --- Skills Section --- */
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1.5rem; text-align: center; }
+        .skill-item { background-color: var(--card-bg); padding: 1.5rem 1rem; border-radius: 8px; border: 1px solid var(--card-border); transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, border-color 0.3s ease; box-shadow: var(--card-shadow); } 
+        .skill-item:hover { transform: translateY(-5px); box-shadow: 0 6px 12px rgba(0,0,0,0.08); border-color: var(--accent-primary); }
+        body.dark-theme .skill-item:hover { box-shadow: 0 6px 12px rgba(0,0,0,0.4); }
+        .skill-item i { font-size: 2.5rem; margin-bottom: 1rem; color: var(--accent-primary); }
+        .skill-item h3 { font-size: 1.1rem; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-primary); }
+        .skill-item p { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.3; word-wrap: break-word; }
+
+        /* --- Projects Section --- */
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .project-card { background-color: var(--card-bg); border-radius: 8px; overflow: hidden; border: 1px solid var(--card-border); box-shadow: var(--card-shadow); transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, border-color 0.3s ease; display: flex; flex-direction: column; } 
+        .project-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08); }
+        body.dark-theme .project-card:hover { box-shadow: 0 8px 20px rgba(0,0,0,0.4); }
+         .project-card-image { height: 180px; background: linear-gradient(45deg, var(--accent-gemini-blue), var(--accent-gemini-purple)); display: flex; align-items: center; justify-content: center; color: #FFFFFF; font-weight: 600; } 
+         .project-card-image i { font-size: 3rem; opacity: 0.9; }
+        .project-card-content { padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; }
+        .project-card h3 { font-size: 1.3rem; margin-bottom: 0.75rem; color: var(--text-primary); }
+        .project-card p { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1rem; flex-grow: 1; }
+        .project-tags { margin-bottom: 1rem; }
+        .project-tags span { display: inline-block; background-color: var(--tag-bg); color: var(--tag-text); font-size: 0.75rem; padding: 0.25rem 0.6rem; border-radius: 4px; margin-right: 0.5rem; margin-bottom: 0.5rem; border: 1px solid var(--tag-border); transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; }
+        .project-links a { color: var(--accent-primary); text-decoration: none; margin-right: 1rem; font-weight: 500; transition: color 0.3s ease; }
+        .project-links a:hover { color: var(--text-primary); } /* This will be light text on dark mode, might need adjustment if accent-primary is too light */
+         body.dark-theme .project-links a:hover { color: var(--accent-gemini-pink); } /* Example: use another accent for hover in dark mode for more pop */
+         .project-links i { margin-right: 0.3rem; }
+
+        /* --- Case Study Modal Style --- */
+        #robinhood-case-study-modal {
+            display: none; 
+            position: fixed; 
+            z-index: 2000; 
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto; 
+            background-color: rgba(32, 33, 36, 0.85); 
+            padding: 2rem 1rem; 
+        }
+        .modal-content {
+            background-color: var(--modal-bg); 
+            margin: auto; 
+            padding: 2rem;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            width: 90%; 
+            max-width: 800px; 
+            color: var(--text-secondary);
+            position: relative; 
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+        }
+        body.dark-theme .modal-content {
+             box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+        }
+        .modal-content h2 { color: var(--text-primary); font-size: 1.8rem; margin-bottom: 1rem; text-align: center; }
+        .modal-content h3 { color: var(--text-primary); font-size: 1.3rem; margin-top: 1.5rem; margin-bottom: 0.5rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.3rem; }
+        .modal-content ul { list-style-position: inside; padding-left: 1rem; margin-bottom: 1rem; }
+        .modal-content ul ul { list-style-type: circle; padding-left: 2rem; margin-top: 0.5rem; }
+        .modal-close-button {
+            color: var(--text-secondary);
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        .modal-close-button:hover,
+        .modal-close-button:focus {
+            color: var(--accent-primary);
+            text-decoration: none;
+        }
+
+        /* --- Contact Section --- */
+        #contact { text-align: center; }
+         #contact p { max-width: 600px; margin: 0 auto 2rem auto; color: var(--text-secondary); font-size: clamp(0.9rem, 2vw, 1rem); }
+         .contact-links { margin-top: 2rem; }
+         .contact-links a { color: var(--text-secondary); font-size: 1.8rem; margin: 0 1rem; transition: color 0.3s ease, transform 0.3s ease; display: inline-block; }
+         .contact-links a:hover { color: var(--accent-primary); transform: translateY(-3px); }
+
+        /* --- Footer --- */
+        footer { text-align: center; padding: 2rem 1rem; margin-top: 0; border-top: 1px solid var(--border-color); color: var(--text-secondary); font-size: 0.9rem; background-color: var(--bg-main); transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease; }
+         footer a { color: var(--accent-primary); text-decoration: none; }
+         footer a:hover { text-decoration: underline; }
+
+
+        /* --- Responsive Design --- */
+        @media (max-width: 768px) {
+            html { font-size: 15px; }
+            section { padding: var(--section-padding-tablet); }
+            
+            .nav-links { display: none; } /* Hide normal nav links */
+            .nav-actions-cluster { gap: 0.5rem; /* Adjust gap if theme toggle feels too close to menu toggle */ }
+            
+            /* Ensure theme toggle is visible if menu toggle is also visible */
+            .theme-toggle-btn { font-size: 1.3rem; /* Slightly larger for easier tap on mobile */ }
+            .menu-toggle { display: block; } 
+            
+            /* Mobile Nav Active State */
+            .nav-links.mobile-nav-active { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background-color: var(--bg-alt); /* Uses themed bg-alt */ padding: 0; border-top: 1px solid var(--border-color); box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+            body.dark-theme .nav-links.mobile-nav-active { box-shadow: 0 4px 6px rgba(0,0,0,0.3); }
+
+            .nav-links.mobile-nav-active li { margin: 0; text-align: center; }
+            .nav-links.mobile-nav-active a { padding: 1rem; display: block; border-bottom: 1px solid var(--border-color); width: 100%; color: var(--text-primary);} /* Uses themed text & border */
+            .nav-links.mobile-nav-active li:last-child a { border-bottom: none; }
+            
+            .skills-grid { grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 1rem;}
+            .projects-grid { grid-template-columns: 1fr; gap: 1.5rem;}
+            
+            .modal-content { width: 95%; padding: 1.5rem; }
+            .modal-content h2 { font-size: 1.6rem; }
+            .modal-content h3 { font-size: 1.2rem; }
+            .modal-close-button { top: 0.8rem; right: 1rem; font-size: 1.8rem;}
+            #robinhoodChartFrame { height: 450px; border: 1px solid var(--border-color); /* Themed border */ }
+        }
+
+        @media (max-width: 480px) {
+            html { font-size: 14px; }
+            section { padding: var(--section-padding-mobile); }
+            .navbar .container { padding: 0 1rem; }
+            .nav-logo { font-size: 1.3rem; }
+            .theme-toggle-btn { font-size: 1.2rem; margin-right: 0.2rem; /* Space it from hamburger */ }
+            .menu-toggle { font-size: 1.4rem; }
+
+
+            #hero { padding-top: 6rem; padding-bottom: 3rem; }
+            .hero-content h1 { font-size: clamp(1.8rem, 7vw, 2.2rem); }
+            .hero-content p.subtitle { font-size: clamp(0.9rem, 4vw, 1rem); }
+
+            .cta-button { padding: 0.7rem 1.5rem; width: 100%; margin-bottom: 1rem; font-size: 0.95rem;}
+            .secondary-cta { width: 100%; margin-left: 0; text-align: center; display: block; font-size: 0.9rem;}
+            
+            .skills-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem;} /* Stays 2 columns, ensure text wraps */
+            .skill-item h3 {font-size: 1rem;}
+            .skill-item p {font-size: 0.8rem;}
+
+            #contact p { max-width: 90%; }
+            .contact-links a { font-size: 1.6rem; margin: 0 0.8rem; }
+            
+            .modal-content { padding: 1rem; }
+            .modal-content h2 { font-size: 1.4rem; }
+            .modal-content h3 { font-size: 1.1rem; }
+            #robinhoodChartFrame { height: 350px; } /* Further reduced height for very small screens */
+            
+            .project-card-content { padding: 1rem; }
+            .project-card h3 {font-size: 1.15rem;}
+            .project-card p {font-size: 0.9rem;}
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+         <div class="container">
+            <a href="#hero" class="nav-logo">
+                <span class="logo-large">D</span>aniel <span class="logo-large">B</span>rovarnik
+            </a>
+            <div class="nav-actions-cluster">
+                <button id="theme-toggle-button" class="theme-toggle-btn" aria-label="Toggle theme">
+                    <i class="fas fa-sun"></i> <!-- Default icon, JS will change it -->
+                </button>
+                <ul class="nav-links">
+                    <li><a href="#hero" class="active">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <button class="menu-toggle" aria-label="Toggle menu"> <i class="fas fa-bars"></i> </button>
+            </div>
+        </div>
+    </nav>
+
+    <section id="hero">
+         <div class="container hero-content">
+            <h1>Hi, I'm Daniel Brovarnik.<br> <span id="dynamic-role-text"></span> </h1>
+            <p class="subtitle">Passionate about uncovering hidden patterns, leveling up insights like in my favorite games, and telling compelling data-driven stories.</p>
+            <a href="#projects" class="cta-button">View My Work</a>
+             <a href="Daniel_Brovarnik_Resume.pdf" target="_blank" class="secondary-cta" download="Daniel_Brovarnik_Resume.pdf">Download Resume</a>
+        </div>
+    </section>
+
+    <section id="about">
+         <div class="container about-content">
+             <img src="C:\Users\Daniel\Downloads\website\headshot.jpg" alt="Daniel Brovarnik Headshot" class="profile-pic"> <h2 class="section-title">About Me</h2>
+            <p>
+I’m a recent Brooklyn College graduate (Magna Cum Laude, December 2024), where I majored in Business Administration, Business Management (Consumer & Organizational Behavior), and Psychology. In other words, I spent four years trying to figure out why people do what they do—and accidentally figuring out what I don’t want to do. But maybe that’s what college is for.            <p>
+For the past 6 months, at the time of writing this About Me section for a portfolio that has just seen its first steps, I do feel like this is the direction I want to be in, and I’m excited to be taking it. I’ve been teaching myself everything there is to know about data analytics—from SQL to R to Python to Excel and Tableau.            <p>
+I think there is a satisfaction in being able to work in an environment where your job is to find that needle in a haystack—the answer to problems in a sea of millions and millions of rows of numbers. And the only thing I wish for now is to be able to do this and share these ideas with other people as a team, something I haven’t had the chance yet to do.
+
+I will persevere! I am endlessly curious, quick to learn new technologies, and am optimistic about the future of data and how it can illuminate the best path forward.        </div>
+    </section>
+
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title">My Analyst Toolkit</h2>
+            <div class="skills-grid">
+                 <div class="skill-item"><i class="fas fa-database"></i><h3>SQL</h3><p>Querying & Data Retrieval</p></div>
+                 <div class="skill-item"><i class="fas fa-database"></i><h3>PostgreSQL</h3><p>Relational Databases</p></div>
+                 <div class="skill-item"><i class="fa-brands fa-python"></i><h3>Python</h3><p>Analysis Libraries (Learning)</p></div>
+                 <div class="skill-item"><i class="fa-brands fa-jupyter"></i><h3>Jupyter Notebook</h3><p>Interactive Analysis</p></div>
+                 <div class="skill-item"><i class="fa-brands fa-r-project"></i><h3>R</h3><p>Statistical Analysis</p></div>
+                 <div class="skill-item"><i class="fas fa-chart-bar"></i><h3>Tableau</h3><p>Data Visualization</p></div>
+                 <div class="skill-item"><i class="fas fa-file-excel"></i><h3>MS Excel</h3><p>VLOOKUP, Pivot Tables</p></div>
+                 <div class="skill-item"><i class="fa-brands fa-google"></i><h3>Google Workspace</h3><p>Sheets, Docs, Slides</p></div>
+                 <div class="skill-item"><i class="fa-brands fa-google"></i><h3>Google BigQuery</h3><p>Cloud Data Warehouse</p></div>
+                 <div class="skill-item"><i class="fas fa-server"></i><h3>Database Management</h3><p>Organization & Entry</p></div>
+                 <div class="skill-item"><i class="fas fa-cogs"></i><h3>IBM SPSS</h3><p>Statistical Software</p></div>
+                 <div class="skill-item"><i class="fas fa-language"></i><h3>Languages</h3><p>Russian, Norwegian</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">Data Adventures (Projects)</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-card-image"><i class="fas fa-map-marked-alt"></i></div>
+                    <div class="project-card-content">
+                        <h3>U.S. State Credit Landscape Analysis</h3>
+                        <p>Interactive Tableau dashboard visualizing state-level credit card debt, credit-to-income ratios, and average credit scores for Q3 2024. Data sourced from Experian and BLS.gov, providing insights into regional financial health.</p>
+                        <div class="project-tags">
+                            <span>Tableau</span><span>Data Visualization</span><span>Credit Analysis</span><span>US Economy</span><span>Interactive Dashboard</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://public.tableau.com/app/profile/daniel.brovarnik/viz/State-LevelCreditCardDebtCreditDebttoIncomeandCreditScoreAnalysis-Q32024TableauPublic/Dashboard1" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                            <a href="https://github.com/danielbrovarnik" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-card-image"><i class="fas fa-file-alt"></i></div> <div class="project-card-content">
+                        <h3>Case Study: Robinhood Analysis</h3>
+                        <p>Analysis of Robinhood's AUC, Net Deposits, and SPY performance (Jan 2022 - Mar 2025) exploring the shift towards active trading. Includes interactive visualization embedded below.</p>
+                        <div class="project-tags">
+                            <span>Case Study</span><span>Data Analysis</span><span>Finance</span><span>Visualization</span><span>Market Trends</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" onclick="openModal('robinhood-case-study-modal'); return false;"><i class="fas fa-book-open"></i> Read Case Study</a>
+                            <a href="https://github.com/danielbrovarnik/Robinhood-AUC-Net-Deposits-and-the-Shift-Towards-Active-Trading" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-card-image"><i class="fas fa-shuffle"></i></div> <div class="project-card-content">
+                        <h3>Market Shuffle App</h3>
+                        <p>Developed a web application with Google Gemini designed for interactive market data exploration or randomization. Built primarily with JavaScript, HTML, and CSS.</p>
+                        <div class="project-tags">
+                            <span>Web App</span><span>JavaScript</span><span>HTML</span><span>CSS</span><span>Data Visualization?</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/danielbrovarnik/Market-Shuffle-App" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                            <a href="https://market-shuffle.netlify.app/" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-card-image"><i class="fas fa-chart-line"></i></div> <div class="project-card-content">
+                        <h3>Stockle</h3>
+                        <p>Created 'Stockle', a fun, Wordle-style guessing game focused on stock market tickers. This idea was brought to life with Google Gemini</p>
+                        <div class="project-tags">
+                            <span>Web App</span><span>JavaScript</span><span>HTML</span><span>CSS</span><span>Game</span><span>Finance API?</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/danielbrovarnik/Stockle" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                            <a href="https://stock-wordle.netlify.app/" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-card-image"><i class="fas fa-database"></i></div>
+                    <div class="project-card-content">
+                        <h3>Tech Skills & Salary Analysis (NY) - SQL Project</h3>
+                        <p>Analyzed tech skill demand and associated salaries in the New York job market using SQL. Queried a job postings dataset to identify top-paying roles, most in-demand skills, and optimal skills based on salary and demand, offering insights for career development.</p>
+                        <div class="project-tags">
+                            <span>SQL</span><span>Data Analysis</span><span>Salary Analysis</span><span>Job Market</span><span>New York</span><span>PostgreSQL</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/danielbrovarnik/sql_STUFF" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-card-image"><i class="fas fa-gamepad"></i></div> <div class="project-card-content">
+                        <h3>Video Game Sales Analysis (Conceptual)</h3>
+                        <p>Analyzed historical sales data to identify trends in genre popularity and platform performance across different regions. Uncovered key factors influencing high-selling titles.</p>
+                        <div class="project-tags">
+                            <span>Python</span><span>Pandas</span><span>Matplotlib</span><span>SQL</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/danielbrovarnik" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                            <a href="#" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo (Optional)</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- MODAL: Robinhood Case Study -->
+    <div id="robinhood-case-study-modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close-button" onclick="closeModal('robinhood-case-study-modal')">×</span>
+            <h2>Case Study: Robinhood AUC, Net Deposits, and the Shift Towards Active Trading</h2>
+
+            <h3>1. Abstract</h3>
+            <p>This case study analyzes the relationship between Robinhood's reported Assets Under Custody (AUC), monthly Net Deposits, and the SPDR S&P 500 ETF Trust (SPY) performance from January 2022 to March 2025. Visualization reveals AUC closely tracks SPY, driven by market valuation. However, Net Deposits exhibit distinct patterns, including lagged recovery post-downturn and acceleration during rallies, suggesting evolving retail investor sentiment. Notably, recent increases in Net Deposits, coinciding with platform enhancements like futures trading, hint at a potential shift towards a more active user base. This evolution could imply greater resilience in Net Deposits and trading revenue for Robinhood, even during market downturns, compared to reliance solely on passive, buy-and-hold investors.</p>
+            <h3>2. Background</h3>
+            <ul> <li><strong>Robinhood Markets, Inc.:</strong> A prominent financial services platform offering commission-free trading, attracting a large retail investor base.</li> <li><strong>Assets Under Custody (AUC):</strong> Total market value of client assets held on the platform, influenced by market performance and fund flows.</li> <li><strong>Net Deposits:</strong> Monthly net flow of customer funds (Deposits - Withdrawals), indicating active capital allocation decisions.</li> <li><strong>SPDR S&P 500 ETF Trust (SPY):</strong> Benchmark for U.S. stock market performance.</li> <li><strong>Platform Evolution:</strong> Robinhood has expanded its offerings beyond basic stock trading to include options, cryptocurrencies, retirement accounts, and more recently, futures trading, catering to a broader range of investor/trader profiles.</li> </ul> <p>Understanding how market trends, active fund flows, and platform changes interact is crucial for assessing Robinhood's growth trajectory and revenue stability.</p>
+            <h3>3. Objective</h3>
+            <p>To analyze the interplay between Robinhood's AUC, Net Deposits, and SPY performance, using the provided data (Jan 2022 - Mar 2025), and to hypothesize how platform evolution, particularly the introduction of products appealing to active traders (like futures), might influence future Net Deposit trends and platform resilience.</p>
+            <h3>4. Data & Methodology</h3>
+            <p><strong>Data Sources & Collection:</strong></p> <ul> <li><strong>SPY Data:</strong> Daily closing prices for the SPDR S&P 500 ETF (SPY) were obtained (e.g., from historical financial data providers).</li> <li><strong>Robinhood Data:</strong> Monthly operational metrics reports, specifically containing Assets Under Custody (AUC) and Net Deposit figures, were sourced directly from Robinhood's Investor Relations website. These reports were available as PDF documents.</li> </ul> <p><strong>Timeframe:</strong> January 2022 – March 2025.</p> <p><strong>Variables:</strong></p> <ul> <li>Robinhood AUC (Billion USD)</li> <li>Robinhood Net Deposits (Billion USD)</li> <li>SPY Closing Price (USD)</li> </ul> <p><strong>Data Processing & Tools:</strong></p> <ul> <li><strong>SPY Processing:</strong> Google BigQuery was utilized to process the daily SPY closing prices, aggregating them to extract the month-end closing price for each month within the timeframe.</li> <li><strong>Robinhood Data Extraction:</strong> Google Gemini was employed to scrape and extract the required monthly AUC and Net Deposit figures directly from the downloaded PDF reports.</li> <li><strong>Data Consolidation & Initial Review:</strong> Extracted Robinhood data and processed SPY data were imported into Google Sheets for initial validation, cleaning, and merging into a single dataset aligned by month.</li> <li><strong>Visualization:</strong> The interactive visualization below, created using Chart.js, displays the relationship between these variables. It is embedded from a separate HTML file (`hoodauc.html`).</li> </ul> <p><strong>Analytical Approach:</strong> Trend analysis and interpretation: The multi-axis line chart below was visually analyzed to identify correlations, divergences, and specific patterns in the relationship between the three variables over time. Focus was placed on Net Deposit behavior relative to market direction (SPY) and overall asset value (AUC).</p>
+
+            <iframe id="robinhoodChartFrame"
+                    src="hoodauc.html"
+                    style="width: 100%; height: 550px; border: 1px solid var(--border-color); margin: 1.5rem 0; border-radius: 4px;"
+                    title="Interactive Robinhood AUC Chart">
+                Your browser doesn't support iframes. You can view the interactive chart
+                <a href="hoodauc.html" target="_blank" rel="noopener noreferrer">here</a>.
+            </iframe>
+
+            <h3>5. Analysis & Findings (Based on the Chart)</h3>
+            <p>The multi-axis line chart (above) reveals several key dynamics:</p> <ul> <li><strong>AUC & SPY Correlation:</strong> AUC (blue line, primary left axis) shows a strong visual correlation with SPY Price (red line, right axis). Peaks and troughs largely coincide, confirming that market valuation is a primary driver of AUC fluctuations.</li> <li><strong>Net Deposits vs. Market Momentum:</strong> Net Deposits (green dashed line, secondary left axis) display a more complex relationship: <ul> <li><em>Lagging Recovery (Mid-2022 to Mid-2023):</em> While SPY began recovering in late 2022/early 2023, Net Deposits remained relatively flat and low (around $1.0B-$1.6B), suggesting retail investors hesitated to add significant new capital immediately following the downturn.</li> <li><em>Accelerated Inflows (Late 2023 - 2024):</em> As the market rally gained strong momentum (SPY climbing steadily), Net Deposits saw a significant uptick, frequently exceeding $3.5B and peaking near $5B-$7.6B in late 2024/early 2025 in this dataset. This suggests increased confidence or FOMO driving capital inflows during strong bull phases.</li> <li><em>Sensitivity to Volatility (e.g., Sep 2024):</em> The dip in Net Deposits during September 2024, despite a high closing SPY price, highlights that net flows can react negatively to perceived short-term risk or volatility, even if the overall market trend remains positive.</li> </ul> </li> <li><strong>Recent Deposit Strength:</strong> The data shows particularly strong Net Deposits in late 2024 and early 2025, reaching levels significantly higher than during the 2023 recovery phase, even as SPY experienced some volatility.</li> </ul>
+            <h3>6. Discussion: Platform Evolution & Future Implications</h3>
+            <p>The observed patterns in Net Deposits, particularly the recent strength, invite consideration of factors beyond simple market sentiment. Robinhood's strategic expansion into products favored by more active traders, such as options and futures, could be influencing these flows.</p> <ul> <li><strong>Attracting Active Traders:</strong> Features like futures trading appeal to users interested in short-term market movements, hedging, or leveraging volatility, rather than just long-term investing. This potentially diversifies Robinhood's user base beyond traditional buy-and-hold investors.</li> <li><strong>Potential for Increased Engagement:</strong> Active traders typically engage with the platform more frequently, generating trading volume irrespective of overall market direction (up or down).</li> <li><strong>Hypothesis on Net Deposits & Revenue Resilience:</strong> If Robinhood successfully attracts and retains a larger cohort of active traders, Net Deposits might become less solely dependent on positive market momentum. Active traders may deposit funds to capitalize on volatility, potentially leading to more consistent, or even counter-cyclical, net inflows compared to periods dominated by passive investing sentiment.</li> </ul> <p>This shift could enhance Robinhood's revenue resilience. Trading-based revenue (like Payment for Order Flow or PFOF, commissions on crypto/futures) is driven by activity volume. Increased activity from traders, even during market downturns or sideways markets where passive investors might pause deposits, could provide a more stable revenue stream compared to relying heavily on AUC-based fees or interest on idle cash balances which are more sensitive to market levels and interest rates. The strong deposit numbers seen towards the end of the dataset, coinciding with these product rollouts, could be an early indicator of this trend.</p> <p><strong>Caveats:</strong> This remains a hypothesis based on interpreting the chart alongside platform strategy. Confirmation would require more granular data on user segments, trading volumes per product, and analysis over different market cycles. The provided data doesn't definitively prove this shift, but the Net Deposit behavior, especially recent strength, aligns plausibly with the potential impact of attracting more active users.</p>
+            <h3>7. Conclusion</h3>
+            <p>While Robinhood's AUC remains tightly coupled with S&P 500 performance, Net Deposits reveal a dynamic picture of investor behavior influenced by market sentiment, momentum, and volatility. The analysis suggests a potential evolution in Robinhood's user base, possibly driven by the introduction of products like futures trading that appeal to more active participants. If this trend continues, it could lead to Net Deposit patterns that are less strictly correlated with simple market direction and potentially enhance the resilience of Robinhood's trading revenues, particularly during periods of market uncertainty or downturns. Further analysis with segmented user data would be needed to validate the extent of this shift.</p>
+        </div>
+    </div>
+
+    <section id="contact">
+         <div class="container">
+            <h2 class="section-title">Let's Connect</h2>
+            <p>
+                I'm actively seeking Data Analyst opportunities and exciting projects. Whether you want to discuss data, the latest game releases, or potential collaborations, feel free to reach out!
+            </p>
+            <div class="contact-links">
+                <a href="mailto:danielbrovarnik@gmail.com" target="_blank" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/daniel-brovarnik-645499293" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/danielbrovarnik" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>© <span id="current-year"></span> Daniel Brovarnik. Assembled with data, passion and Google Gemini.</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+
+    <script defer>
+        document.addEventListener('DOMContentLoaded', function() {
+
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+
+            // Active Nav Link Scrolling
+            const sections = document.querySelectorAll('section[id]');
+            const navLi = document.querySelectorAll('.nav-links li a');
+            const navBar = document.querySelector('.navbar');
+            let currentSectionId = '';
+
+            const scrollHandler = () => {
+                const navHeight = navBar ? navBar.offsetHeight : 60;
+                let foundSection = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (pageYOffset >= (sectionTop - navHeight - 50 )) {
+                        foundSection = section.getAttribute('id');
+                    }
+                });
+                 if (window.pageYOffset < (sections[0].offsetTop + sections[0].offsetHeight / 2 - navHeight) && sections.length > 0) {
+                     foundSection = 'hero';
+                 } else if (!foundSection && sections.length > 0 && window.pageYOffset < sections[0].offsetTop - navHeight) {
+                     foundSection = 'hero';
+                 }
+
+                 if (foundSection && foundSection !== currentSectionId) {
+                    currentSectionId = foundSection;
+                    navLi.forEach(a => {
+                        a.classList.remove('active');
+                        if (a.getAttribute('href') === `#${currentSectionId}`) { a.classList.add('active'); }
+                    });
+                 } else if (!foundSection && currentSectionId !== 'hero' && sections.length > 0) { 
+                    currentSectionId = 'hero';
+                     navLi.forEach(a => {
+                        a.classList.remove('active');
+                        if (a.getAttribute('href') === `#${currentSectionId}`) { a.classList.add('active'); }
+                    });
+                 }
+            };
+            window.addEventListener('scroll', scrollHandler);
+            scrollHandler(); 
+
+            // Mobile Menu Toggle
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            if (menuToggle && navLinks) {
+                menuToggle.addEventListener('click', () => {
+                    navLinks.classList.toggle('mobile-nav-active');
+                    const isExpanded = navLinks.classList.contains('mobile-nav-active');
+                    menuToggle.setAttribute('aria-expanded', isExpanded);
+                });
+                navLinks.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        if (navLinks.classList.contains('mobile-nav-active')) {
+                            navLinks.classList.remove('mobile-nav-active');
+                            menuToggle.setAttribute('aria-expanded', 'false');
+                        }
+                    });
+                });
+            }
+
+            // Typed.js
+            const options = {
+                strings: [ 'A Data Analyst.', 'A Problem Solver.', 'A Gamer.', 'An Investor.', 'A Brother.', 'A Team Player.','A Friend', 'A Critical Thinker.', 'A Storyteller.', 'A Self-Starter.', 'A Lifelong Learner.', 'An Optimist.', 'A Listener.', 'A Leader.'  ],
+                typeSpeed: 55, backSpeed: 35, backDelay: 2000, startDelay: 500, loop: true, smartBackspace: true, showCursor: true,
+                cursorChar: '|',
+            };
+            const dynamicTextElement = document.getElementById('dynamic-role-text');
+            if (dynamicTextElement) {
+                const typed = new Typed('#dynamic-role-text', options);
+            }
+
+            // Modal Functions
+            window.openModal = function(modalId) {
+                const modal = document.getElementById(modalId);
+                if (modal) {
+                    modal.style.display = "block";
+                    document.body.style.overflow = 'hidden';
+                }
+            }
+            window.closeModal = function(modalId) {
+                const modal = document.getElementById(modalId);
+                if (modal) {
+                    modal.style.display = "none";
+                    document.body.style.overflow = 'auto';
+                }
+            }
+            window.onclick = function(event) {
+                const modal = document.getElementById('robinhood-case-study-modal');
+                if (modal && event.target == modal) {
+                    closeModal('robinhood-case-study-modal');
+                }
+            }
+            document.addEventListener('keydown', function(event) {
+                if (event.key === "Escape") {
+                    closeModal('robinhood-case-study-modal');
+                }
+            });
+
+            // Theme Toggle
+            const themeToggleButton = document.getElementById('theme-toggle-button');
+            const themeIcon = themeToggleButton.querySelector('i');
+
+            const applyTheme = (theme) => {
+                if (theme === 'dark') {
+                    document.body.classList.add('dark-theme');
+                    themeIcon.classList.remove('fa-sun');
+                    themeIcon.classList.add('fa-moon');
+                } else {
+                    document.body.classList.remove('dark-theme');
+                    themeIcon.classList.remove('fa-moon');
+                    themeIcon.classList.add('fa-sun');
+                }
+                localStorage.setItem('theme', theme);
+            };
+
+            const currentTheme = localStorage.getItem('theme') || 'light';
+            applyTheme(currentTheme);
+
+            themeToggleButton.addEventListener('click', () => {
+                const newTheme = document.body.classList.contains('dark-theme') ? 'light' : 'dark';
+                applyTheme(newTheme);
+            });
+        }); 
+    </script>
+
+</body>
+</html>
