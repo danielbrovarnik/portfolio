@@ -1,3 +1,5 @@
+--- START OF FILE index (1).html ---
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,7 +37,7 @@
             --navbar-bg: rgba(255, 255, 255, 0.85);
             --card-bg: #FFFFFF;
             --card-border: var(--border-color);
-            --modal-bg: var(--bg-main);
+            --modal-bg: #FFFFFF; /* Default light modal */
             --tag-bg: var(--bg-alt);
             --tag-text: var(--text-secondary);
             --tag-border: var(--border-color);
@@ -70,28 +72,11 @@
         .nav-logo { font-weight: 700; font-size: 1.5rem; color: var(--text-primary); text-decoration: none; display: inline-block; vertical-align: middle; line-height: 1; }
         .nav-logo .logo-large { font-size: 1.3em; font-weight: 700; color: var(--accent-primary); vertical-align: baseline; }
         
-        .nav-actions-cluster { display: flex; align-items: center; gap: 0.5rem; /* Gap between theme toggle and menu toggle/nav links */ }
+        .nav-actions-cluster { display: flex; align-items: center; gap: 0.5rem; }
         
-        .theme-toggle-btn {
-            background: none;
-            border: none;
-            color: var(--text-secondary);
-            font-size: 1.2rem; /* Adjust size as needed */
-            cursor: pointer;
-            padding: 0.5rem;
-            border-radius: 50%;
-            transition: color 0.3s ease, background-color 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .theme-toggle-btn:hover {
-            color: var(--accent-primary);
-            background-color: rgba(0,0,0,0.05); /* Subtle hover for light mode */
-        }
-        body.dark-theme .theme-toggle-btn:hover {
-            background-color: rgba(255,255,255,0.1); /* Subtle hover for dark mode */
-        }
+        .theme-toggle-btn { background: none; border: none; color: var(--text-secondary); font-size: 1.2rem; cursor: pointer; padding: 0.5rem; border-radius: 50%; transition: color 0.3s ease, background-color 0.3s ease; display: flex; align-items: center; justify-content: center; }
+        .theme-toggle-btn:hover { color: var(--accent-primary); background-color: rgba(0,0,0,0.05); }
+        body.dark-theme .theme-toggle-btn:hover { background-color: rgba(255,255,255,0.1); }
 
         .nav-links { list-style: none; display: flex; }
         .nav-links li { margin-left: 1.5rem; }
@@ -103,16 +88,7 @@
         #hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 8rem 1rem 4rem; background: var(--bg-main); position: relative; transition: background-color 0.3s ease; } 
         .hero-content h1 { font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 700; margin-bottom: 0.5rem; line-height: 1.2; color: var(--text-primary); }
         .hero-content h1 span { background: linear-gradient(90deg, var(--accent-gemini-blue), var(--accent-gemini-purple), var(--accent-gemini-pink)); -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent; }
-        .typed-cursor {
-            background: linear-gradient(90deg, var(--accent-gemini-blue), var(--accent-gemini-purple), var(--accent-gemini-pink));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            -webkit-text-fill-color: transparent;
-            opacity: 1;
-            animation: typedjsBlink 0.7s infinite;
-            font-weight: normal; 
-        }
+        .typed-cursor { background: linear-gradient(90deg, var(--accent-gemini-blue), var(--accent-gemini-purple), var(--accent-gemini-pink)); -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent; opacity: 1; animation: typedjsBlink 0.7s infinite; font-weight: normal; }
         @keyframes typedjsBlink { 50% { opacity: 0.0; } }
         .hero-content p.subtitle { font-size: clamp(1rem, 2.5vw, 1.15rem); color: var(--text-secondary); margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto; }
         .cta-button { display: inline-block; background-color: var(--accent-primary); color: #FFFFFF; padding: 0.8rem 2rem; border-radius: 50px; text-decoration: none; font-weight: 600; transition: transform 0.3s ease, box-shadow 0.3s ease; box-shadow: 0 4px 15px rgba(163, 88, 223, 0.25); }
@@ -124,7 +100,6 @@
         section { padding: var(--section-padding-desktop); transition: background-color 0.3s ease; }
         #about, #projects { background-color: var(--bg-main); } 
         #skills, #contact { background-color: var(--bg-alt); }
-
 
         .section-title { text-align: center; font-size: clamp(2rem, 4vw, 2.5rem); font-weight: 600; margin-bottom: 3rem; position: relative; color: var(--text-primary); }
         .section-title::after { content: ''; display: block; width: 60px; height: 3px; background-color: var(--accent-primary); margin: 0.5rem auto 0; border-radius: 2px; }
@@ -157,12 +132,12 @@
         .project-tags { margin-bottom: 1rem; }
         .project-tags span { display: inline-block; background-color: var(--tag-bg); color: var(--tag-text); font-size: 0.75rem; padding: 0.25rem 0.6rem; border-radius: 4px; margin-right: 0.5rem; margin-bottom: 0.5rem; border: 1px solid var(--tag-border); transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; }
         .project-links a { color: var(--accent-primary); text-decoration: none; margin-right: 1rem; font-weight: 500; transition: color 0.3s ease; }
-        .project-links a:hover { color: var(--text-primary); } /* This will be light text on dark mode, might need adjustment if accent-primary is too light */
-         body.dark-theme .project-links a:hover { color: var(--accent-gemini-pink); } /* Example: use another accent for hover in dark mode for more pop */
+        .project-links a:hover { color: var(--text-primary); }
+         body.dark-theme .project-links a:hover { color: var(--accent-gemini-pink); }
          .project-links i { margin-right: 0.3rem; }
 
-        /* --- Case Study Modal Style --- */
-        #robinhood-case-study-modal {
+        /* --- Case Study Modal & Expanded Chart Modal Styles --- */
+        .modal { /* Base for all modals */
             display: none; 
             position: fixed; 
             z-index: 2000; 
@@ -174,7 +149,7 @@
             background-color: rgba(32, 33, 36, 0.85); 
             padding: 2rem 1rem; 
         }
-        .modal-content {
+        .modal-content { /* For #robinhood-case-study-modal content */
             background-color: var(--modal-bg); 
             margin: auto; 
             padding: 2rem;
@@ -194,20 +169,124 @@
         .modal-content h3 { color: var(--text-primary); font-size: 1.3rem; margin-top: 1.5rem; margin-bottom: 0.5rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.3rem; }
         .modal-content ul { list-style-position: inside; padding-left: 1rem; margin-bottom: 1rem; }
         .modal-content ul ul { list-style-type: circle; padding-left: 2rem; margin-top: 0.5rem; }
-        .modal-close-button {
+        
+        .modal-close-button { 
             color: var(--text-secondary);
             position: absolute;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease, background-color 0.3s ease;
+            z-index: 10; 
+        }
+        .modal-close-button:hover, .modal-close-button:focus {
+            color: var(--accent-primary);
+            text-decoration: none;
+        }
+        #robinhood-case-study-modal .modal-close-button {
             top: 1rem;
             right: 1.5rem;
             font-size: 2rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: color 0.3s ease;
         }
-        .modal-close-button:hover,
-        .modal-close-button:focus {
-            color: var(--accent-primary);
-            text-decoration: none;
+        
+        #robinhoodChartFrame { 
+            width: 100%;
+            height: 550px; 
+            border: 1px solid var(--border-color);
+            margin: 1.5rem 0 0.5rem; 
+            border-radius: 4px;
+            display: block; 
+        }
+        .expand-chart-btn {
+            display: block; 
+            margin: 0 auto 1.5rem; 
+            padding: 0.6rem 1.2rem;
+            background-color: var(--accent-secondary);
+            color: #FFFFFF;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+            text-decoration: none; /* For anchor if used */
+        }
+        .expand-chart-btn:hover {
+            background-color: var(--accent-primary);
+        }
+        .expand-chart-btn i {
+            margin-right: 0.5rem;
+        }
+
+        .chart-download-fallback {
+            display: none; /* Hidden by default, shown only on small screens */
+            text-align: center;
+            margin: 1.5rem 0;
+            color: var(--text-secondary);
+        }
+        .chart-download-fallback p {
+            margin-bottom: 0.75rem;
+            font-size: 0.9rem;
+        }
+        .download-chart-image-btn { /* This is an <a> tag styled as .cta-button */
+            display: inline-block; /* To allow centering and auto width */
+            width: auto; /* Override .cta-button full width on mobile if needed */
+            margin-top: 0.5rem;
+            background-color: var(--accent-secondary); /* Ensure consistent look */
+        }
+        .download-chart-image-btn i {
+            margin-right: 0.5rem;
+        }
+
+
+        /* Expanded Chart Modal */
+        .chart-expand-modal { 
+            z-index: 2001; 
+            overflow: hidden; 
+            padding: 1rem; 
+            align-items: center;
+            justify-content: center;
+        }
+        .expanded-chart-modal-content { 
+            background-color: var(--modal-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            width: 95vw; 
+            height: 90vh; 
+            max-width: 1600px; 
+            max-height: 900px; 
+            position: relative; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            padding: 0; 
+            display: flex; 
+        }
+        body.dark-theme .expanded-chart-modal-content {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+        }
+        .expanded-chart-close-btn {
+            top: 0.75rem; 
+            right: 0.75rem;
+            font-size: 1.8rem;
+            width: 36px;
+            height: 36px;
+            line-height: 36px;
+            text-align: center;
+            background-color: rgba(128,128,128, 0.2); 
+            border-radius: 50%;
+        }
+        body.dark-theme .expanded-chart-close-btn {
+            background-color: rgba(60,60,60, 0.5);
+        }
+        .expanded-chart-close-btn:hover {
+             background-color: rgba(128,128,128, 0.4);
+        }
+        body.dark-theme .expanded-chart-close-btn:hover {
+             background-color: rgba(80,80,80, 0.7);
+        }
+        #expandedRobinhoodChartFrame { 
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 8px; 
         }
 
         /* --- Contact Section --- */
@@ -228,29 +307,27 @@
             html { font-size: 15px; }
             section { padding: var(--section-padding-tablet); }
             
-            .nav-links { display: none; } /* Hide normal nav links */
-            .nav-actions-cluster { gap: 0.5rem; /* Adjust gap if theme toggle feels too close to menu toggle */ }
-            
-            /* Ensure theme toggle is visible if menu toggle is also visible */
-            .theme-toggle-btn { font-size: 1.3rem; /* Slightly larger for easier tap on mobile */ }
+            .nav-links { display: none; }
+            .nav-actions-cluster { gap: 0.5rem; }
+            .theme-toggle-btn { font-size: 1.3rem; }
             .menu-toggle { display: block; } 
             
-            /* Mobile Nav Active State */
-            .nav-links.mobile-nav-active { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background-color: var(--bg-alt); /* Uses themed bg-alt */ padding: 0; border-top: 1px solid var(--border-color); box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+            .nav-links.mobile-nav-active { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background-color: var(--bg-alt); padding: 0; border-top: 1px solid var(--border-color); box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
             body.dark-theme .nav-links.mobile-nav-active { box-shadow: 0 4px 6px rgba(0,0,0,0.3); }
-
             .nav-links.mobile-nav-active li { margin: 0; text-align: center; }
-            .nav-links.mobile-nav-active a { padding: 1rem; display: block; border-bottom: 1px solid var(--border-color); width: 100%; color: var(--text-primary);} /* Uses themed text & border */
+            .nav-links.mobile-nav-active a { padding: 1rem; display: block; border-bottom: 1px solid var(--border-color); width: 100%; color: var(--text-primary);}
             .nav-links.mobile-nav-active li:last-child a { border-bottom: none; }
             
             .skills-grid { grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 1rem;}
             .projects-grid { grid-template-columns: 1fr; gap: 1.5rem;}
             
-            .modal-content { width: 95%; padding: 1.5rem; }
+            .modal-content { width: 95%; padding: 1.5rem; } 
             .modal-content h2 { font-size: 1.6rem; }
             .modal-content h3 { font-size: 1.2rem; }
-            .modal-close-button { top: 0.8rem; right: 1rem; font-size: 1.8rem;}
-            #robinhoodChartFrame { height: 450px; border: 1px solid var(--border-color); /* Themed border */ }
+            #robinhood-case-study-modal .modal-close-button { top: 0.8rem; right: 1rem; font-size: 1.8rem;}
+            
+            #robinhoodChartFrame { height: 450px; } 
+            .expanded-chart-modal-content { width: 95vw; height: 90vh; } 
         }
 
         @media (max-width: 480px) {
@@ -258,9 +335,8 @@
             section { padding: var(--section-padding-mobile); }
             .navbar .container { padding: 0 1rem; }
             .nav-logo { font-size: 1.3rem; }
-            .theme-toggle-btn { font-size: 1.2rem; margin-right: 0.2rem; /* Space it from hamburger */ }
+            .theme-toggle-btn { font-size: 1.2rem; margin-right: 0.2rem; }
             .menu-toggle { font-size: 1.4rem; }
-
 
             #hero { padding-top: 6rem; padding-bottom: 3rem; }
             .hero-content h1 { font-size: clamp(1.8rem, 7vw, 2.2rem); }
@@ -269,18 +345,34 @@
             .cta-button { padding: 0.7rem 1.5rem; width: 100%; margin-bottom: 1rem; font-size: 0.95rem;}
             .secondary-cta { width: 100%; margin-left: 0; text-align: center; display: block; font-size: 0.9rem;}
             
-            .skills-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem;} /* Stays 2 columns, ensure text wraps */
+            .skills-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem;}
             .skill-item h3 {font-size: 1rem;}
             .skill-item p {font-size: 0.8rem;}
 
             #contact p { max-width: 90%; }
             .contact-links a { font-size: 1.6rem; margin: 0 0.8rem; }
             
-            .modal-content { padding: 1rem; }
+            .modal-content { padding: 1rem; } 
             .modal-content h2 { font-size: 1.4rem; }
             .modal-content h3 { font-size: 1.1rem; }
-            #robinhoodChartFrame { height: 350px; } /* Further reduced height for very small screens */
             
+            #robinhoodChartFrame, /* Hide embedded iframe */
+            .expand-chart-btn {   /* Hide expand button for interactive chart */
+                display: none; 
+            }
+            .chart-download-fallback { /* Show the download fallback section */
+                display: block;
+            }
+            .download-chart-image-btn { /* Specific style for the download button on mobile */
+                 padding: 0.7rem 1.5rem; /* Adjust padding if needed */
+                 font-size: 0.9rem; /* Adjust font size if needed */
+                 /* width: auto; already set globally, good. */
+            }
+            
+            .expanded-chart-modal-content { width: 100vw; height: 100vh; border-radius: 0; } 
+            .expanded-chart-close-btn { top: 0.5rem; right: 0.5rem; }
+
+
             .project-card-content { padding: 1rem; }
             .project-card h3 {font-size: 1.15rem;}
             .project-card p {font-size: 0.9rem;}
@@ -296,7 +388,7 @@
             </a>
             <div class="nav-actions-cluster">
                 <button id="theme-toggle-button" class="theme-toggle-btn" aria-label="Toggle theme">
-                    <i class="fas fa-sun"></i> <!-- Default icon, JS will change it -->
+                    <i class="fas fa-sun"></i>
                 </button>
                 <ul class="nav-links">
                     <li><a href="#hero" class="active">Home</a></li>
@@ -438,7 +530,6 @@ I will persevere! I am endlessly curious, quick to learn new technologies, and a
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
@@ -460,11 +551,19 @@ I will persevere! I am endlessly curious, quick to learn new technologies, and a
 
             <iframe id="robinhoodChartFrame"
                     src="hoodauc.html"
-                    style="width: 100%; height: 550px; border: 1px solid var(--border-color); margin: 1.5rem 0; border-radius: 4px;"
                     title="Interactive Robinhood AUC Chart">
                 Your browser doesn't support iframes. You can view the interactive chart
                 <a href="hoodauc.html" target="_blank" rel="noopener noreferrer">here</a>.
             </iframe>
+            <button class="expand-chart-btn" aria-label="Expand chart view">
+                <i class="fas fa-expand-alt"></i> Expand Chart
+            </button>
+            <div class="chart-download-fallback">
+                <p>The interactive chart is best viewed on larger screens. For mobile, you can download an image of the chart:</p>
+                <a href="robinhood_auc_deposits_spy_chart_with_title (2).png" class="cta-button download-chart-image-btn" download="Robinhood_Chart_Analysis.png">
+                    <i class="fas fa-download"></i> Download Chart Image
+                </a>
+            </div>
 
             <h3>5. Analysis & Findings (Based on the Chart)</h3>
             <p>The multi-axis line chart (above) reveals several key dynamics:</p> <ul> <li><strong>AUC & SPY Correlation:</strong> AUC (blue line, primary left axis) shows a strong visual correlation with SPY Price (red line, right axis). Peaks and troughs largely coincide, confirming that market valuation is a primary driver of AUC fluctuations.</li> <li><strong>Net Deposits vs. Market Momentum:</strong> Net Deposits (green dashed line, secondary left axis) display a more complex relationship: <ul> <li><em>Lagging Recovery (Mid-2022 to Mid-2023):</em> While SPY began recovering in late 2022/early 2023, Net Deposits remained relatively flat and low (around $1.0B-$1.6B), suggesting retail investors hesitated to add significant new capital immediately following the downturn.</li> <li><em>Accelerated Inflows (Late 2023 - 2024):</em> As the market rally gained strong momentum (SPY climbing steadily), Net Deposits saw a significant uptick, frequently exceeding $3.5B and peaking near $5B-$7.6B in late 2024/early 2025 in this dataset. This suggests increased confidence or FOMO driving capital inflows during strong bull phases.</li> <li><em>Sensitivity to Volatility (e.g., Sep 2024):</em> The dip in Net Deposits during September 2024, despite a high closing SPY price, highlights that net flows can react negatively to perceived short-term risk or volatility, even if the overall market trend remains positive.</li> </ul> </li> <li><strong>Recent Deposit Strength:</strong> The data shows particularly strong Net Deposits in late 2024 and early 2025, reaching levels significantly higher than during the 2023 recovery phase, even as SPY experienced some volatility.</li> </ul>
@@ -494,6 +593,17 @@ I will persevere! I am endlessly curious, quick to learn new technologies, and a
             <p>© <span id="current-year"></span> Daniel Brovarnik. Assembled with data, passion and Google Gemini.</p>
         </div>
     </footer>
+
+    <!-- MODAL: Expanded Robinhood Chart -->
+    <div id="expanded-chart-modal" class="modal chart-expand-modal">
+        <div class="expanded-chart-modal-content">
+            <span class="modal-close-button expanded-chart-close-btn" aria-label="Close expanded chart view">×</span>
+            <iframe id="expandedRobinhoodChartFrame"
+                    src="about:blank" 
+                    title="Expanded Interactive Robinhood AUC Chart">
+            </iframe>
+        </div>
+    </div>
 
     <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
 
@@ -571,29 +681,67 @@ I will persevere! I am endlessly curious, quick to learn new technologies, and a
             }
 
             // Modal Functions
+            const caseStudyModal = document.getElementById('robinhood-case-study-modal');
+
             window.openModal = function(modalId) {
-                const modal = document.getElementById(modalId);
-                if (modal) {
-                    modal.style.display = "block";
+                const modalToOpen = document.getElementById(modalId);
+                if (modalToOpen) {
+                    modalToOpen.style.display = "block"; 
+                    if (modalId === 'robinhood-case-study-modal') { 
+                         modalToOpen.style.display = "block";
+                    }
                     document.body.style.overflow = 'hidden';
                 }
             }
             window.closeModal = function(modalId) {
-                const modal = document.getElementById(modalId);
-                if (modal) {
-                    modal.style.display = "none";
-                    document.body.style.overflow = 'auto';
+                const modalToClose = document.getElementById(modalId);
+                if (modalToClose) {
+                    modalToClose.style.display = "none";
+                    document.body.style.overflow = 'auto'; 
                 }
             }
-            window.onclick = function(event) {
-                const modal = document.getElementById('robinhood-case-study-modal');
-                if (modal && event.target == modal) {
-                    closeModal('robinhood-case-study-modal');
-                }
+            if (caseStudyModal) {
+                caseStudyModal.addEventListener('click', function(event) {
+                    if (event.target == caseStudyModal) {
+                        closeModal('robinhood-case-study-modal');
+                    }
+                });
             }
+            
+            // Expanded Chart Modal
+            const expandChartButton = document.querySelector('.expand-chart-btn');
+            const expandedChartModal = document.getElementById('expanded-chart-modal');
+            const expandedChartIframe = document.getElementById('expandedRobinhoodChartFrame');
+            const expandedChartCloseButton = document.querySelector('.expanded-chart-close-btn');
+            const originalChartIframeSrc = "hoodauc.html";
+
+            if (expandChartButton && expandedChartModal && expandedChartIframe && expandedChartCloseButton) {
+                expandChartButton.addEventListener('click', () => {
+                    expandedChartIframe.src = originalChartIframeSrc;
+                    expandedChartModal.style.display = 'flex'; 
+                });
+
+                expandedChartCloseButton.addEventListener('click', () => {
+                    expandedChartModal.style.display = 'none';
+                    expandedChartIframe.src = 'about:blank'; 
+                });
+
+                expandedChartModal.addEventListener('click', (event) => {
+                    if (event.target === expandedChartModal) { 
+                        expandedChartModal.style.display = 'none';
+                        expandedChartIframe.src = 'about:blank';
+                    }
+                });
+            }
+
             document.addEventListener('keydown', function(event) {
                 if (event.key === "Escape") {
-                    closeModal('robinhood-case-study-modal');
+                    if (expandedChartModal && expandedChartModal.style.display !== 'none') {
+                        expandedChartModal.style.display = 'none';
+                        if(expandedChartIframe) expandedChartIframe.src = 'about:blank';
+                    } else if (caseStudyModal && caseStudyModal.style.display !== 'none') {
+                        closeModal('robinhood-case-study-modal');
+                    }
                 }
             });
 
