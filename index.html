@@ -13,10 +13,10 @@
 
     <style>
         :root {
-            --bg-main: #FFFFFF; 
-            --bg-alt: #F8F9FA;  
-            --text-primary: #202124; 
-            --text-secondary: #5F6368; 
+            --bg-main: #FFFFFF;
+            --bg-alt: #F8F9FA;
+            --text-primary: #202124;
+            --text-secondary: #5F6368;
 
             --accent-gemini-blue: #4A80FF;
             --accent-gemini-purple: #A358DF;
@@ -25,8 +25,8 @@
             --accent-primary: var(--accent-gemini-purple);
             --accent-secondary: var(--accent-gemini-blue);
 
-            --border-color: #DADCE0; 
-            --card-shadow: 0 2px 4px rgba(0, 0, 0, 0.05), 0 4px 8px rgba(0, 0, 0, 0.05); 
+            --border-color: #DADCE0;
+            --card-shadow: 0 2px 4px rgba(0, 0, 0, 0.05), 0 4px 8px rgba(0, 0, 0, 0.05);
             --section-padding-desktop: 5rem 1rem;
             --section-padding-tablet: 4rem 1rem;
             --section-padding-mobile: 3rem 1rem;
@@ -48,7 +48,7 @@
             --text-secondary: #aaaaaa;
             --border-color: #383838;
             --card-shadow: 0 2px 6px rgba(0,0,0,0.3), 0 4px 12px rgba(0,0,0,0.3);
-            
+
             --navbar-bg: rgba(30, 30, 30, 0.85);
             --card-bg: #2c2c2c;
             --card-border: #484848;
@@ -69,9 +69,9 @@
         .navbar .container { display: flex; justify-content: space-between; align-items: center; }
         .nav-logo { font-weight: 700; font-size: 1.5rem; color: var(--text-primary); text-decoration: none; display: inline-block; vertical-align: middle; line-height: 1; }
         .nav-logo .logo-large { font-size: 1.3em; font-weight: 700; color: var(--accent-primary); vertical-align: baseline; }
-        
+
         .nav-actions-cluster { display: flex; align-items: center; gap: 0.5rem; }
-        
+
         .theme-toggle-btn { background: none; border: none; color: var(--text-secondary); font-size: 1.2rem; cursor: pointer; padding: 0.5rem; border-radius: 50%; transition: color 0.3s ease, background-color 0.3s ease; display: flex; align-items: center; justify-content: center; }
         .theme-toggle-btn:hover { color: var(--accent-primary); background-color: rgba(0,0,0,0.05); }
         body.dark-theme .theme-toggle-btn:hover { background-color: rgba(255,255,255,0.1); }
@@ -83,7 +83,7 @@
         .menu-toggle { display: none; background: none; border: none; color: var(--text-primary); font-size: 1.5rem; cursor: pointer; padding: 0.5rem; }
 
         /* --- Hero Section --- */
-        #hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 8rem 1rem 4rem; background: var(--bg-main); position: relative; transition: background-color 0.3s ease; } 
+        #hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 8rem 1rem 4rem; background: var(--bg-main); position: relative; transition: background-color 0.3s ease; }
         .hero-content h1 { font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 700; margin-bottom: 0.5rem; line-height: 1.2; color: var(--text-primary); }
         .hero-content h1 span { background: linear-gradient(90deg, var(--accent-gemini-blue), var(--accent-gemini-purple), var(--accent-gemini-pink)); -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent; }
         .typed-cursor { background: linear-gradient(90deg, var(--accent-gemini-blue), var(--accent-gemini-purple), var(--accent-gemini-pink)); -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent; opacity: 1; animation: typedjsBlink 0.7s infinite; font-weight: normal; }
@@ -96,7 +96,7 @@
 
         /* --- Section Base Styles --- */
         section { padding: var(--section-padding-desktop); transition: background-color 0.3s ease; }
-        #about, #projects { background-color: var(--bg-main); } 
+        #about, #projects { background-color: var(--bg-main); }
         #skills, #contact { background-color: var(--bg-alt); }
 
         .section-title { text-align: center; font-size: clamp(2rem, 4vw, 2.5rem); font-weight: 600; margin-bottom: 3rem; position: relative; color: var(--text-primary); }
@@ -110,7 +110,7 @@
 
         /* --- Skills Section --- */
         .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1.5rem; text-align: center; }
-        .skill-item { background-color: var(--card-bg); padding: 1.5rem 1rem; border-radius: 8px; border: 1px solid var(--card-border); transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, border-color 0.3s ease; box-shadow: var(--card-shadow); } 
+        .skill-item { background-color: var(--card-bg); padding: 1.5rem 1rem; border-radius: 8px; border: 1px solid var(--card-border); transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, border-color 0.3s ease; box-shadow: var(--card-shadow); }
         .skill-item:hover { transform: translateY(-5px); box-shadow: 0 6px 12px rgba(0,0,0,0.08); border-color: var(--accent-primary); }
         body.dark-theme .skill-item:hover { box-shadow: 0 6px 12px rgba(0,0,0,0.4); }
         .skill-item i { font-size: 2.5rem; margin-bottom: 1rem; color: var(--accent-primary); }
@@ -119,10 +119,10 @@
 
         /* --- Projects Section --- */
         .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
-        .project-card { background-color: var(--card-bg); border-radius: 8px; overflow: hidden; border: 1px solid var(--card-border); box-shadow: var(--card-shadow); transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, border-color 0.3s ease; display: flex; flex-direction: column; } 
+        .project-card { background-color: var(--card-bg); border-radius: 8px; overflow: hidden; border: 1px solid var(--card-border); box-shadow: var(--card-shadow); transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, border-color 0.3s ease; display: flex; flex-direction: column; }
         .project-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08); }
         body.dark-theme .project-card:hover { box-shadow: 0 8px 20px rgba(0,0,0,0.4); }
-         .project-card-image { height: 180px; background: linear-gradient(45deg, var(--accent-gemini-blue), var(--accent-gemini-purple)); display: flex; align-items: center; justify-content: center; color: #FFFFFF; font-weight: 600; } 
+         .project-card-image { height: 180px; background: linear-gradient(45deg, var(--accent-gemini-blue), var(--accent-gemini-purple)); display: flex; align-items: center; justify-content: center; color: #FFFFFF; font-weight: 600; }
          .project-card-image i { font-size: 3rem; opacity: 0.9; }
         .project-card-content { padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; }
         .project-card h3 { font-size: 1.3rem; margin-bottom: 0.75rem; color: var(--text-primary); }
@@ -131,32 +131,32 @@
         .project-tags span { display: inline-block; background-color: var(--tag-bg); color: var(--tag-text); font-size: 0.75rem; padding: 0.25rem 0.6rem; border-radius: 4px; margin-right: 0.5rem; margin-bottom: 0.5rem; border: 1px solid var(--tag-border); transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; }
         .project-links a { color: var(--accent-primary); text-decoration: none; margin-right: 1rem; font-weight: 500; transition: color 0.3s ease; }
         .project-links a:hover { color: var(--text-primary); }
-         body.dark-theme .project-links a:hover { color: var(--accent-gemini-pink); }
+         body.dark-theme .project-links a:hover { color: #FFFFFF; } /* Changed from --accent-gemini-pink */
          .project-links i { margin-right: 0.3rem; }
 
         /* --- Case Study Modal & Expanded Chart Modal Styles --- */
         .modal { /* Base for all modals */
-            display: none; 
-            position: fixed; 
-            z-index: 2000; 
+            display: none;
+            position: fixed;
+            z-index: 2000;
             left: 0;
             top: 0;
             width: 100%;
             height: 100%;
             overflow: auto; /* For #robinhood-case-study-modal if content is long */
-            background-color: rgba(32, 33, 36, 0.85); 
-            padding: 2rem 1rem; 
+            background-color: rgba(32, 33, 36, 0.85);
+            padding: 2rem 1rem;
         }
         .modal-content { /* For #robinhood-case-study-modal content */
-            background-color: var(--modal-bg); 
-            margin: auto; 
+            background-color: var(--modal-bg);
+            margin: auto;
             padding: 2rem;
             border: 1px solid var(--border-color);
             border-radius: 8px;
-            width: 90%; 
-            max-width: 800px; 
+            width: 90%;
+            max-width: 800px;
             color: var(--text-secondary);
-            position: relative; 
+            position: relative;
             box-shadow: 0 8px 25px rgba(0,0,0,0.15);
             transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
         }
@@ -167,14 +167,14 @@
         .modal-content h3 { color: var(--text-primary); font-size: 1.3rem; margin-top: 1.5rem; margin-bottom: 0.5rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.3rem; }
         .modal-content ul { list-style-position: inside; padding-left: 1rem; margin-bottom: 1rem; }
         .modal-content ul ul { list-style-type: circle; padding-left: 2rem; margin-top: 0.5rem; }
-        
+
         .modal-close-button { /* Generic close button, used by case study and expanded chart */
             color: var(--text-secondary);
             position: absolute;
             font-weight: bold;
             cursor: pointer;
             transition: color 0.3s ease, background-color 0.3s ease;
-            z-index: 10; 
+            z-index: 10;
         }
         .modal-close-button:hover, .modal-close-button:focus {
             color: var(--accent-primary);
@@ -186,17 +186,17 @@
             right: 1.5rem;
             font-size: 2rem;
         }
-        
+
         #robinhoodChartFrame { /* Embedded iframe in case study */
             width: 100%;
-            height: 550px; 
+            height: 550px;
             border: 1px solid var(--border-color);
             margin: 1.5rem 0 0.5rem; /* Space before expand button */
             border-radius: 4px;
-            display: block; 
+            display: block;
         }
         .expand-chart-btn {
-            display: block; 
+            display: block;
             margin: 0 auto 1.5rem; /* Centered, space after */
             padding: 0.6rem 1.2rem;
             background-color: var(--accent-secondary);
@@ -216,7 +216,7 @@
         }
 
         .iframe-mobile-fallback {
-            display: none; 
+            display: none;
             padding: 1rem;
             text-align: center;
             background-color: var(--bg-alt);
@@ -241,10 +241,10 @@
             background-color: var(--modal-bg);
             border: 1px solid var(--border-color);
             border-radius: 8px;
-            width: 95vw; 
-            height: 90vh; 
-            max-width: 1600px; 
-            max-height: 900px; 
+            width: 95vw;
+            height: 90vh;
+            max-width: 1600px;
+            max-height: 900px;
             position: relative; /* For absolute positioning of close button */
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
             padding: 0; /* Iframe will fill this */
@@ -255,7 +255,7 @@
         }
         /* Positioning for expanded chart modal close button */
         .expanded-chart-close-btn {
-            top: 0.75rem; 
+            top: 0.75rem;
             right: 0.75rem;
             font-size: 1.8rem;
             width: 36px;
@@ -293,31 +293,41 @@
          footer a { color: var(--accent-primary); text-decoration: none; }
          footer a:hover { text-decoration: underline; }
 
+        /* --- Scroll Fade-in Animation --- */
+        .scroll-fade {
+            opacity: 0;
+            transform: translateY(30px); /* Start 30px down */
+            transition: opacity 0.7s ease-out, transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .scroll-fade.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
         /* --- Responsive Design --- */
         @media (max-width: 768px) {
             html { font-size: 15px; }
             section { padding: var(--section-padding-tablet); }
-            
+
             .nav-links { display: none; }
             .nav-actions-cluster { gap: 0.5rem; }
             .theme-toggle-btn { font-size: 1.3rem; }
-            .menu-toggle { display: block; } 
-            
+            .menu-toggle { display: block; }
+
             .nav-links.mobile-nav-active { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background-color: var(--bg-alt); padding: 0; border-top: 1px solid var(--border-color); box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
             body.dark-theme .nav-links.mobile-nav-active { box-shadow: 0 4px 6px rgba(0,0,0,0.3); }
             .nav-links.mobile-nav-active li { margin: 0; text-align: center; }
             .nav-links.mobile-nav-active a { padding: 1rem; display: block; border-bottom: 1px solid var(--border-color); width: 100%; color: var(--text-primary);}
             .nav-links.mobile-nav-active li:last-child a { border-bottom: none; }
-            
+
             .skills-grid { grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 1rem;}
             .projects-grid { grid-template-columns: 1fr; gap: 1.5rem;}
-            
+
             .modal-content { width: 95%; padding: 1.5rem; } /* Case study modal content */
             .modal-content h2 { font-size: 1.6rem; }
             .modal-content h3 { font-size: 1.2rem; }
             #robinhood-case-study-modal .modal-close-button { top: 0.8rem; right: 1rem; font-size: 1.8rem;}
-            
+
             #robinhoodChartFrame { height: 450px; } /* Embedded iframe */
             .expanded-chart-modal-content { width: 95vw; height: 90vh; } /* Expanded modal content */
         }
@@ -336,23 +346,23 @@
 
             .cta-button { padding: 0.7rem 1.5rem; width: 100%; margin-bottom: 1rem; font-size: 0.95rem;}
             .secondary-cta { width: 100%; margin-left: 0; text-align: center; display: block; font-size: 0.9rem;}
-            
+
             .skills-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem;}
             .skill-item h3 {font-size: 1rem;}
             .skill-item p {font-size: 0.8rem;}
 
             #contact p { max-width: 90%; }
             .contact-links a { font-size: 1.6rem; margin: 0 0.8rem; }
-            
+
             .modal-content { padding: 1rem; } /* Case study modal content */
             .modal-content h2 { font-size: 1.4rem; }
             .modal-content h3 { font-size: 1.1rem; }
-            
+
             #robinhoodChartFrame, .expand-chart-btn { /* Hide embedded iframe and its expand button */
-                display: none; 
+                display: none;
             }
             .iframe-mobile-fallback { display: block; } /* Show fallback text */
-            
+
             .expanded-chart-modal-content { width: 100vw; height: 100vh; border-radius: 0; } /* Expanded modal full screen on small mobile */
             .expanded-chart-close-btn { top: 0.5rem; right: 0.5rem; }
 
@@ -431,6 +441,20 @@ I will persevere! I am endlessly curious, quick to learn new technologies, and a
             <h2 class="section-title">Data Adventures (Projects)</h2>
             <div class="projects-grid">
                 <div class="project-card">
+                    <div class="project-card-image"><i class="fas fa-shopping-cart"></i></div>
+                    <div class="project-card-content">
+                        <h3>ECommerce Sales & Customer Analysis</h3>
+                        <p>Analyzed e-commerce sales data using SQL (PostgreSQL) and Python (Plotly) to understand customer behavior, LTV, and retention. This project identified key customer segments, cohort trends, and churn patterns, delivering actionable strategies to boost retention and revenue.</p>
+                        <div class="project-tags">
+                            <span>SQL</span><span>Python</span><span>Data Analysis</span><span>ECommerce</span><span>Customer LTV</span><span>Cohort Analysis</span><span>Retention</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/danielbrovarnik/ECommerce-Sales-Customer-Analysis" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
                     <div class="project-card-image"><i class="fas fa-map-marked-alt"></i></div>
                     <div class="project-card-content">
                         <h3>U.S. State Credit Landscape Analysis</h3>
@@ -500,20 +524,6 @@ I will persevere! I am endlessly curious, quick to learn new technologies, and a
                         </div>
                     </div>
                 </div>
-
-                <div class="project-card">
-                    <div class="project-card-image"><i class="fas fa-gamepad"></i></div> <div class="project-card-content">
-                        <h3>Video Game Sales Analysis (Conceptual)</h3>
-                        <p>Analyzed historical sales data to identify trends in genre popularity and platform performance across different regions. Uncovered key factors influencing high-selling titles.</p>
-                        <div class="project-tags">
-                            <span>Python</span><span>Pandas</span><span>Matplotlib</span><span>SQL</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/danielbrovarnik" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-                            <a href="#" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo (Optional)</a>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -543,7 +553,7 @@ I will persevere! I am endlessly curious, quick to learn new technologies, and a
                 <i class="fas fa-expand-alt"></i> Expand Chart
             </button>
             <div class="iframe-mobile-fallback">
-                The interactive chart is best viewed on larger screens. You can also 
+                The interactive chart is best viewed on larger screens. You can also
                 <a href="hoodauc.html" target="_blank" rel="noopener noreferrer">view it directly here</a>.
             </div>
 
@@ -581,7 +591,7 @@ I will persevere! I am endlessly curious, quick to learn new technologies, and a
         <div class="expanded-chart-modal-content">
             <span class="modal-close-button expanded-chart-close-btn" aria-label="Close expanded chart view">×</span>
             <iframe id="expandedRobinhoodChartFrame"
-                    src="about:blank" 
+                    src="about:blank"
                     title="Expanded Interactive Robinhood AUC Chart">
             </iframe>
         </div>
@@ -621,7 +631,7 @@ I will persevere! I am endlessly curious, quick to learn new technologies, and a
                         a.classList.remove('active');
                         if (a.getAttribute('href') === `#${currentSectionId}`) { a.classList.add('active'); }
                     });
-                 } else if (!foundSection && currentSectionId !== 'hero' && sections.length > 0) { 
+                 } else if (!foundSection && currentSectionId !== 'hero' && sections.length > 0) {
                     currentSectionId = 'hero';
                      navLi.forEach(a => {
                         a.classList.remove('active');
@@ -630,7 +640,7 @@ I will persevere! I am endlessly curious, quick to learn new technologies, and a
                  }
             };
             window.addEventListener('scroll', scrollHandler);
-            scrollHandler(); 
+            scrollHandler();
 
             // Mobile Menu Toggle
             const menuToggle = document.querySelector('.menu-toggle');
@@ -662,6 +672,45 @@ I will persevere! I am endlessly curious, quick to learn new technologies, and a
                 const typed = new Typed('#dynamic-role-text', options);
             }
 
+            // Scroll-triggered fade-in animations
+            const scrollFadeElements = document.querySelectorAll(
+                '.section-title, ' +
+                '#about .profile-pic, #about .about-content > p, ' +
+                '.skill-item, .project-card, ' +
+                '#contact .container > p, #contact .contact-links'
+            );
+
+            if ('IntersectionObserver' in window) {
+                // Add the initial .scroll-fade class to all elements that will be animated
+                scrollFadeElements.forEach(el => el.classList.add('scroll-fade'));
+
+                const observerOptions = {
+                    root: null, // observes intersections relative to the viewport
+                    rootMargin: '0px 0px -60px 0px', // Triggers a bit before element fully enters (60px from bottom)
+                    threshold: 0.01 // Trigger as soon as 1% of the element is visible
+                };
+
+                const observerCallback = (entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('is-visible');
+                            observer.unobserve(entry.target); // Stop observing once it's visible (animates once)
+                        }
+                    });
+                };
+
+                const intersectionObserver = new IntersectionObserver(observerCallback, observerOptions);
+                scrollFadeElements.forEach(el => intersectionObserver.observe(el));
+
+            } else {
+                // Fallback for very old browsers: just make elements visible immediately
+                scrollFadeElements.forEach(el => {
+                    el.style.opacity = 1;
+                    el.style.transform = 'translateY(0)';
+                });
+            }
+
+
             // Modal Functions
             const caseStudyModal = document.getElementById('robinhood-case-study-modal');
 
@@ -679,9 +728,7 @@ I will persevere! I am endlessly curious, quick to learn new technologies, and a
                 const modalToClose = document.getElementById(modalId);
                 if (modalToClose) {
                     modalToClose.style.display = "none";
-                    // Only restore body scroll if no other main modal is conceptually open
-                    // For now, this simple close is fine as expanded chart is on top
-                    document.body.style.overflow = 'auto'; 
+                    document.body.style.overflow = 'auto';
                 }
             }
             // Close case study modal on overlay click
@@ -692,7 +739,7 @@ I will persevere! I am endlessly curious, quick to learn new technologies, and a
                     }
                 });
             }
-            
+
             // Expanded Chart Modal
             const expandChartButton = document.querySelector('.expand-chart-btn');
             const expandedChartModal = document.getElementById('expanded-chart-modal');
@@ -703,17 +750,16 @@ I will persevere! I am endlessly curious, quick to learn new technologies, and a
             if (expandChartButton && expandedChartModal && expandedChartIframe && expandedChartCloseButton) {
                 expandChartButton.addEventListener('click', () => {
                     expandedChartIframe.src = originalChartIframeSrc;
-                    expandedChartModal.style.display = 'flex'; // Use flex for centering
-                    // document.body.style.overflow remains 'hidden' from main modal
+                    expandedChartModal.style.display = 'flex';
                 });
 
                 expandedChartCloseButton.addEventListener('click', () => {
                     expandedChartModal.style.display = 'none';
-                    expandedChartIframe.src = 'about:blank'; 
+                    expandedChartIframe.src = 'about:blank';
                 });
 
                 expandedChartModal.addEventListener('click', (event) => {
-                    if (event.target === expandedChartModal) { // Clicked on the overlay
+                    if (event.target === expandedChartModal) {
                         expandedChartModal.style.display = 'none';
                         expandedChartIframe.src = 'about:blank';
                     }
@@ -756,7 +802,7 @@ I will persevere! I am endlessly curious, quick to learn new technologies, and a
                 const newTheme = document.body.classList.contains('dark-theme') ? 'light' : 'dark';
                 applyTheme(newTheme);
             });
-        }); 
+        });
     </script>
 
 </body>
