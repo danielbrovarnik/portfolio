@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DB | daniel brovarnik - aspiring data analyst</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DB | daniel brovarnik - aspiring data analyst</title>
 code
 Code
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -411,10 +411,10 @@ Code
      <div class="container about-content">
          <img src="headshot.jpg" alt="Daniel Brovarnik Headshot" class="profile-pic"> <h2 class="section-title">About Me</h2>
         <p>
-I’m a recent Brooklyn College graduate (Magna Cum Laude, December 2024), where I majored in Business Administration, Business Management (Consumer & Organizational Behavior), and Psychology. In other words, I spent four years trying to figure out why people do what they do—and accidentally figuring out what I don’t want to do. But maybe that’s what college is for.            <p>
-For the past 6 months, at the time of writing this About Me section for a portfolio that has just seen its first steps, I do feel like this is the direction I want to be in, and I’m excited to be taking it. I’ve been teaching myself everything there is to know about data analytics—from SQL to R to Python to Excel and Tableau.            <p>
+I’m a recent Brooklyn College graduate (Magna Cum Laude, December 2024), where I majored in Business Administration, Business Management (Consumer & Organizational Behavior), and Psychology. In other words, I spent four years trying to figure out why people do what they do—and accidentally figuring out what I don’t want to do. But maybe that’s what college is for. <p>
+For the past 6 months, at the time of writing this About Me section for a portfolio that has just seen its first steps, I do feel like this is the direction I want to be in, and I’m excited to be taking it. I’ve been teaching myself everything there is to know about data analytics—from SQL to R to Python to Excel and Tableau. <p>
 I think there is a satisfaction in being able to work in an environment where your job is to find that needle in a haystack—the answer to problems in a sea of millions and millions of rows of numbers. And the only thing I wish for now is to be able to do this and share these ideas with other people as a team, something I haven’t had the chance yet to do.
-I will persevere! I am endlessly curious, quick to learn new technologies, and am optimistic about the future of data and how it can illuminate the best path forward.        </div>
+I will persevere! I am endlessly curious, quick to learn new technologies, and am optimistic about the future of data and how it can illuminate the best path forward. </div>
 </section>
 code
 Code
@@ -442,6 +442,20 @@ Code
     <div class="container">
         <h2 class="section-title">Data Adventures (Projects)</h2>
         <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-card-image"><i class="fas fa-briefcase"></i></div>
+                <div class="project-card-content">
+                    <h3>Data Analyst Job Market Insights (Jul 2025)</h3>
+                    <p>Analyzed the U.S. data job market using Python (Pandas, Seaborn, Matplotlib) to uncover top-paying and in-demand skills for Data Analyst roles. Delivered insights on salary distribution and skill trends to guide career and hiring strategies.</p>
+                    <div class="project-tags">
+                        <span>Python</span><span>Pandas</span><span>Seaborn</span><span>Data Analysis</span><span>Job Market</span><span>Salary Analysis</span><span>Data Visualization</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/danielbrovarnik/Python_project" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> GitHub</a>
+                    </div>
+                </div>
+            </div>
+
             <div class="project-card">
                 <div class="project-card-image"><i class="fas fa-shopping-cart"></i></div>
                 <div class="project-card-content">
@@ -621,9 +635,9 @@ Code
                     foundSection = section.getAttribute('id');
                 }
             });
-             if (window.pageYOffset < (sections[0].offsetTop + sections[0].offsetHeight / 2 - navHeight) && sections.length > 0) {
+             if (window.pageYOffset < (sections.offsetTop + sections.offsetHeight / 2 - navHeight) && sections.length > 0) {
                  foundSection = 'hero';
-             } else if (!foundSection && sections.length > 0 && window.pageYOffset < sections[0].offsetTop - navHeight) {
+             } else if (!foundSection && sections.length > 0 && window.pageYOffset < sections.offsetTop - navHeight) {
                  foundSection = 'hero';
              }
 
